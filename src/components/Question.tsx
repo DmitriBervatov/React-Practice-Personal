@@ -13,12 +13,33 @@ const Question = () => {
     resetQuiz,
   } = useQuizStore();
 
+  if (showScore) {
+    return (
+      <div className="w-3/4 p-6">
+        <h2 className="text-2xl font-semibold">Your Score</h2>
+        <p className="mt-4 text-lg">
+          You Scored {score} out of {questions.length}
+        </p>
+
+        <button
+          onClick={resetQuiz}
+          className="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          Restart Quiz
+        </button>
+      </div>
+    );
+  }
+
   const question = questions[currentQuestion];
   const currentAnswer = answers[currentQuestion];
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSelect = (optionIndex: any) => {
     selectAnswer(optionIndex);
   };
+
+  const handleSubmit = () => nextQuestion();
 
   return (
     <div className="w-3/4 p-6">
@@ -49,13 +70,23 @@ const Question = () => {
             Previous
           </button>
         )}
-      </div>
 
-      {currentQuestion < questions.length - 1 ? (
-        <button>Next</button>
-      ) : (
-        <></>
-      )}
+        {currentQuestion < questions.length - 1 ? (
+          <button
+            onClick={nextQuestion}
+            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            Next
+          </button>
+        ) : (
+          <button
+            onClick={handleSubmit}
+            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+          >
+            Submit
+          </button>
+        )}
+      </div>
     </div>
   );
 };
