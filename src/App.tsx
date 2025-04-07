@@ -1,21 +1,11 @@
-import CommentsList from "./components/CommentsList";
-import TodoList from "./components/TodoList";
-import ResourceLoader from "./shared/ResourceLoader";
+import Deduplication from "./components/Deduplication";
 
 function App() {
   return (
-    <>
-      <ResourceLoader resourceUrl="/todos/2" resourceName="todo">
-        <TodoList />
-      </ResourceLoader>
-
-      <hr />
-      <br />
-
-      <ResourceLoader resourceName="/comments/1" resourceUrl="comments">
-        <CommentsList />
-      </ResourceLoader>
-    </>
+    <div>
+      <Deduplication />
+      <Deduplication />
+    </div>
   );
 }
 
