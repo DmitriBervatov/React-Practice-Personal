@@ -1,10 +1,9 @@
-import Deduplication from "./components/Deduplication";
+import Pagination from "./components/Pagination";
 
 function App() {
   return (
     <div>
-      <Deduplication />
-      <Deduplication />
+      <Pagination />
     </div>
   );
 }
